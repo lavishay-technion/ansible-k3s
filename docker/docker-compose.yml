@@ -10,7 +10,7 @@ services:
     networks:
       - vaiolabs.io
     volumes:
-      - ../../../:/home/ansible/ansible_course
+      - ../:/home/ansible/ansible_course
   node1:
     hostname: node1
     build:
