@@ -1,0 +1,8 @@
+FROM debian:11
+RUN apt-get update && apt-get install -y openssh-server git sudo iputils-ping ansible less openssh-client vim nano sshpass uptimed
+RUN echo 'ansible	ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN useradd -m ansible && mkdir -p /home/ansible/.ssh && chown ansible:ansible -R /home/ansible/.ssh
+COPY id_rsa /home/ansible/.ssh/id_rsa
+RUN chown ansible:ansible -R /home/ansible/.ssh
+USER ansible
+WORKDIR /home/ansible
