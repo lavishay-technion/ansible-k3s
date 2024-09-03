@@ -1,0 +1,16 @@
+---
+
+- hosts: localhost
+  roles:
+    - git_app
+    - docker_ansible
+
+# - name: Setup Docker on localhost
+#   hosts: localhost
+#   roles:
+#     - role: docker_ansible
+
+# - name: Setup Git on Docker hosts
+#   hosts: docker_hosts
+#   roles:
+#     - role: git_app
