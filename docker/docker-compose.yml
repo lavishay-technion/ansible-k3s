@@ -55,16 +55,7 @@ services:
     command: ["/usr/sbin/sshd", "-D"]
     networks:
       - vaiolabs.io
-  node_app:
-    hostname: task_app
-    build:
-      context: .
-      dockerfile: Dockerfile.app
-    command: ["/usr/sbin/sshd", "-D"]
-    ports: 
-      - 80:80
-    networks:
-      - vaiolabs.io
+
 
 
 networks:
