@@ -11,8 +11,8 @@ services:
       - vaiolabs.io
     volumes:
       - ../:/home/ansible/ansible_course
-  node1:
-    hostname: node1
+  k3s_master:
+    hostname: k3s_master
     build:
       context: .
       dockerfile: Dockerfile.deb
@@ -22,8 +22,10 @@ services:
     command: ["/usr/sbin/sshd", "-D"]
     networks:
       - vaiolabs.io
-  node3:
-    hostname: node3
+    volumes:
+      - ../:/home/ansible/ansible_course
+  k3s_slave:
+    hostname: k3s_slave
     build:
       context: .
       dockerfile: Dockerfile.deb
@@ -33,29 +35,8 @@ services:
     command: ["/usr/sbin/sshd", "-D"]
     networks:
       - vaiolabs.io
-  node2:
-    hostname: node2
-    build:
-      context: .
-      dockerfile: Dockerfile.rpm
-    environment:
-      SSH_USERNAME: docker
-      SSH_USERPASS: docker
-    command: ["/usr/sbin/sshd", "-D"]
-    networks:
-      - vaiolabs.io
-  node4:
-    hostname: node4
-    build:
-      context: .
-      dockerfile: Dockerfile.rpm
-    environment:
-      SSH_USERNAME: docker
-      SSH_USERPASS: docker
-    command: ["/usr/sbin/sshd", "-D"]
-    networks:
-      - vaiolabs.io
-
+    volumes:
+      - ../:/home/ansible/ansible_course
 
 
 networks:
