@@ -18,7 +18,14 @@
       line: "K3S_KUBECONFIG_MODE='644'"
     become: true
     when: "'master' is in ansible_hostname"
-    notify: "Restarting daemon and k3s"
+
+
+  - name: "Restarting daemon and k3s"
+    shell: |
+      sudo systemctl daemon-reload
+      sudo systemctl restart k3s.service
+    become: true
+    when: "'master' is in ansible_hostname"
 
   - name: Extract token from master
     shell: "sudo cat /var/lib/rancher/k3s/server/token"

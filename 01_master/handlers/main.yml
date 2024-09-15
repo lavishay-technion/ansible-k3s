@@ -1,9 +1,0 @@
----
-# handlers file for test
-  - name: "Restarting daemon and k3s"
-    shell: |
-      sudo systemctl daemon-reload
-      sudo systemctl restart k3s.service
-    become: true
-    when: "'master' is in ansible_hostname"
-
