@@ -1,0 +1,37 @@
+---
+# tasks file for master
+  - name: Copy k3s Binary to /usr/local/bin
+    copy:
+      src: k3s
+      dest: /usr/local/bin/k3s
+      mode: "0711"
+    become: true
+
+
+  - name: Create folder for the k3s images, if doesn't already exist
+    file:
+      path: "/var/lib/rancher/k3s/agent/images/"
+      state: directory
+      mode: '0755'
+    ignore_errors: true
+    become: true
+  
+  - name: Copy k3s images to /var/lib/rancher/k3s/agent
+    copy:
+      src: k3s-airgap-images-amd64.tar.zst
+      dest: /var/lib/rancher/k3s/agent/images/k3s-airgap-images-amd64.tar.zst
+      mode: "0711"
+    become: true
+
+  - name: Copy install script to the target's temp folder, to be run to install k3s
+    copy:
+      src: install.sh
+      dest: /home/{{ ansible_user }}/install.sh
+      mode: "0711"
+    become: true
+
+
+
+
+
+
