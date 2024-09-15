@@ -1,5 +1,4 @@
 ## Installation needed for both VMs: 
-   - net-tools
    - openssh-server
 ## Dependencies:
    - User to be used by Ansible should be mentioned in hosts.ini
