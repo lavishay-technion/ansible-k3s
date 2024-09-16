@@ -12,7 +12,7 @@
 
 ## Ansilbe Roles Explained
 - 00_copying_files: 
-    Using copy module of Ansible to copy the offlines installation files to designated folders with the required permissions
+    * Using copy module of Ansible to copy the offlines installation files to designated folders with the required permissions
     
 - 01_master:
     * Running k3s install.sh with adjustment to set offline installation
