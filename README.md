@@ -1,3 +1,4 @@
+![My Image](./assets/image.png)
 # K3S implementation using Ansible
 
 ## Main Objective steps
