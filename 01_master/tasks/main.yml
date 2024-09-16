@@ -19,7 +19,6 @@
     become: true
     when: "'master' is in ansible_hostname"
 
-
   - name: "Restarting daemon and k3s"
     shell: |
       sudo systemctl daemon-reload
