@@ -1,14 +1,16 @@
 # K3S implementation using Ansible
 
 ## Main Objective steps
-- Using a bash script "run_playbook.sh":
+- Using a bash script "run_playbook.sh", the script's steps:
     - Download the required files to 00_copying_files/files/ to be used by the playbook
-    - Runs the Ansible Playbook "main_playbook.yaml" that runs 3 seperate roles:
-        - 00_copying_files: Copies offlines installation files to designated folders
-        - 01_master: Installs the K3S master server
-        - 02_slave: Installs the K3S slave agent
+    - Runs the Ansible Playbook "main_playbook.yaml" 
 
-## Steps Explained
+- Ansible Playbook runs 3 seperate roles:
+    - 00_copying_files: Copies offlines installation files to designated folders
+    - 01_master: Installs the K3S master server
+    - 02_slave: Installs the K3S slave agent
+
+## Ansilbe Roles Explained
 - 00_copying_files: 
     Using copy module of Ansible to copy the offlines installation files to designated folders with the required permissions
     
