@@ -1,6 +1,6 @@
 ![My Image](./assets/image.png)
 # K3S implementation using Ansible
-
+Based on https://docs.k3s.io/installation/airgap?airgap-cluster=Single+Server+Configuration
 ## Main Objective steps
 - Using a bash script "run_playbook.sh", the script's steps:
     - Downloads the required files to 00_copying_files/files/ to be used by the playbook
