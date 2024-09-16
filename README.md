@@ -1,4 +1,4 @@
-![My Image](./assets/image.png)
+![My Image](./assets/logo.png)
 # K3S implementation using Ansible
 Based on https://docs.k3s.io/installation/airgap?airgap-cluster=Single+Server+Configuration
 ## Main Objective steps
