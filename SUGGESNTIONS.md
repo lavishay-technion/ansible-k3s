@@ -12,7 +12,7 @@ The initial look of the project looks good, there are qwirks that mislead and he
 - Missing  project Explaination
     - having a link to origin helps, but __Purpose Is Missing__
 - Missing dependency of ansible and auto-install of ansible dependency
-- 
+- Missing link to INSTALLATION.md file
 
 ### INSTALL SCRIPT
 
