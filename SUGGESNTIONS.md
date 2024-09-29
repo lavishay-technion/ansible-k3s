@@ -16,7 +16,7 @@ The initial look of the project looks good, there are qwirks that mislead and he
 
 ### INSTALL SCRIPT
 
-- Missing __strict__ mode for validating shell script
+- Missing __strict__ mode for validating shell script (set -o pipefail; set -o errexit)
 - Missing version-control/purpose/developer-maintainer/date on shell script
 - Missing validation on `ansible-playbook` utility
     - On sterile vm, the script fails, and one must debug when ever the script is used
