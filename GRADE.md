@@ -4,5 +4,5 @@
 
 ### Grading
 
-Ori     :
-Avishay :
+- Ori     : 80
+- Avishay : 80
