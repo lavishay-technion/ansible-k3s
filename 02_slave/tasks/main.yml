@@ -1,6 +1,0 @@
----
-# tasks file for 02_slave
-  - name: Running install.sh on Slave
-    shell: INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://"{{ master }}":6443 K3S_TOKEN="{{ master_token_shared }}" /home/"{{ ansible_user }}"/install.sh
-    become: true
-    when: "'slave' is in ansible_hostname"

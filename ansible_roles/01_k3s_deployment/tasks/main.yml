@@ -2,34 +2,29 @@
 # tasks file for 01_master
   - name: Running install.sh on Master
     shell: INSTALL_K3S_SKIP_DOWNLOAD=true /home/{{ ansible_user }}/install.sh
-    become: true
     when: "'master' is in ansible_hostname"
 
   - name: adding configuration to the service
     lineinfile:
       path: "/etc/systemd/system/k3s.service"
       line: "--write-kubeconfig-mode 775"
-    become: true
     when: "'master' is in ansible_hostname"
 
   - name: Adding env variable
     lineinfile:
       path: "/etc/systemd/system/k3s.service.env"
       line: "K3S_KUBECONFIG_MODE='644'"
-    become: true
     when: "'master' is in ansible_hostname"
-
-  - name: "Restarting daemon and k3s"
-    shell: |
-      sudo systemctl daemon-reload
-      sudo systemctl restart k3s.service
-    become: true
+    
+  - name: Restart service k3s, in all cases, also issue daemon-reload to pick up config changes
+    ansible.builtin.systemd_service:
+      state: restarted
+      name: k3s.service
     when: "'master' is in ansible_hostname"
 
   - name: Extract token from master
     shell: "sudo cat /var/lib/rancher/k3s/server/token"
     register: master_token
-    become: true
     run_once: true
     when: "'master' is in ansible_hostname"
   
@@ -38,3 +33,7 @@
       master_token_shared: "{{ master_token.stdout }}"
     run_once: true
     when: "'master' is in ansible_hostname"
+
+  - name: Running install.sh on Slave
+    shell: INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://"{{ master }}":6443 K3S_TOKEN="{{ master_token_shared }}" /home/"{{ ansible_user }}"/install.sh
+    when: "'slave' is in ansible_hostname"

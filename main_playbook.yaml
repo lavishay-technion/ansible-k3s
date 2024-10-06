@@ -1,11 +1,7 @@
 ---
 
 - hosts: all
+  become: true
   roles:
-    - 00_copying_files
-    - 01_master
-    - 02_slave
-# - name: Setup Git on Docker hosts
-#   hosts: docker_hosts
-#   roles:
-#     - role: git_app
+    - ansible_roles/00_copying_files
+    - ansible_roles/01_k3s_deployment
